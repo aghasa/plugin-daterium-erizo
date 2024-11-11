@@ -75,7 +75,7 @@ defined('ABSPATH') or exit;
                                 ?>
                                 <li class="daterium-brand-menu-list-item">
                                     <h5 class="daterium-brand-menu-list-title"><a href="#mf<?php echo $familiaId; ?>"
-                                            alt="<?php echo $familia; ?>" data-original-text="<?php echo $familia; ?>">&#8213;
+                                            alt="<?php echo $familia; ?>" data-original-text="<?php echo $familia; ?>">
                                             <?php echo $familia; ?></a></h5>
                                 </li>
                                 <?php
