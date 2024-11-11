@@ -9,13 +9,13 @@ require_once DATERIUM_PLUGIN_DIR . 'public/models/metodos_bbdd.php';
 $metodos_bbdd = new Metodos_bbdd();
 
 global $daterium_userid;
+global $daterium_id_marca;
 
 // URL para la llamada a la API
 $url_producto = 'https://api.dateriumsystem.com/producto_fc_xml.php?pID=' . $pID . '&userID=' . $daterium_userid;
 
 // Tratamos y transformamos el XML devuelto por la API
 $xml_producto = $metodos_daterium->daterium_get_data_url($url_producto);
-
 $carga_producto_erronea = true;
 
 // Compruebo que exista el producto
@@ -38,8 +38,6 @@ if ($xml_producto != 'error') {
         $pos_catID_producto = count($rutas_para_categoria) - 1;
         $catID = $rutas_para_categoria[$pos_catID_producto]->catID;
 
-        $ruta = $metodos_daterium->get_migas_de_pan($xml_producto, false);
-
         // Busco los nodos referencias/referencia
         $referencias = $xml_producto->xpath('referencias/referencia');
 
@@ -53,7 +51,6 @@ if ($xml_producto != 'error') {
         $datos_referencias = $metodos_daterium->get_datos_referencias($xml_producto);
         $url = htmlspecialchars($_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], ENT_QUOTES, 'UTF-8');
         $script_schema_producto = $metodos_daterium->get_script_ProductGroup($nombre_marca, $descripcion_texto_plano, $url, $datos_referencias, $familia, $subfamilia);
-        $script_migas_pan = $metodos_daterium->get_script_migas($xml_producto, false);
 
         $ruta_aecoc = $metodos_daterium->get_clasificacion_aecoc($xml_producto);
 
@@ -75,7 +72,12 @@ if ($xml_producto != 'error') {
             let jsVar_producto = <?php echo json_encode($codificado); ?>;
         </script>
         <?php
-        $pid_erroneo = false;
+
+        if ($daterium_id_marca == $id_marca) {
+            $pid_erroneo = false;
+        } else {
+            $pid_erroneo = true;
+        }
     } else {
         $pid_erroneo = true;
     }

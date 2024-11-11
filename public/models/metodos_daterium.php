@@ -8,7 +8,8 @@ defined('ABSPATH') or exit;
 class Metodos_Daterium
 {
     public $userID = '';
-    public $catalogo_inicial = '';
+
+    public $marcaID='';
 
     public $metodos = null;
 
@@ -21,7 +22,8 @@ class Metodos_Daterium
         $this->metodos = new Metodos_bbdd();
         global $daterium_userid;
         $this->userID = $daterium_userid;
-        $this->catalogo_inicial = $this->metodos->get_id_marca();
+        global $daterium_id_marca;
+        $this->marcaID= $daterium_id_marca;
     }
 
     /**
@@ -228,79 +230,7 @@ class Metodos_Daterium
         return $nombre;
     }
 
-    /**
-     * Función para obtener las migas de pan.
-     */
-    public function get_migas_de_pan($xml, $categoria)
-    {
-        if ($categoria == true) {
-            $nodos = $xml->xpath('ruta/paso');
-        } else {
-            $nodos = $xml->xpath('rutas/otrasrutas/ruta/paso');
-        }
-
-        $ruta = '';
-        foreach ($nodos as $nodo) {
-            if ($nodo->catID == '1') {
-                continue;
-            } elseif ($nodo->catID == $this->catalogo_inicial) {
-                $ruta = '<a class="daterium-breadcrum" alt="Catálogo" title="Catálogo"  href="' . get_permalink() . '">Catálogo</a> ';
-                continue;
-            }
-            $ruta = $ruta . ' › <a class="daterium-breadcrum" alt="' . $nodo->nombre . '" title="' . $nodo->nombre . '"  href="' . get_permalink() . '/' . $nodo->catID . '/' . $this->daterium_url_title($nodo->nombre) . '">' . $nodo->nombre . '</a>';
-        }
-
-        return $ruta;
-    }
-
-    public function get_script_migas($xml, $categoria)
-    {
-        if ($categoria == true) {
-            $nodos = $xml->xpath('ruta/paso');
-        } else {
-            $nodos = $xml->xpath('rutas/otrasrutas/ruta/paso');
-        }
-
-        $script_migas = '<script type="application/ld+json">{
-            "@context": "http://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement":[';
-
-        $j = 1;
-
-        $tamanio_array = count($nodos);
-        foreach ($nodos as $nodo) {
-            $poner_coma = '';
-            if ($j != $tamanio_array - 1) {
-                $poner_coma = ',';
-            }
-
-            if ($nodo->catID == '1') {
-                continue;
-            } elseif ($nodo->catID == $this->catalogo_inicial) {
-                $script_migas = $script_migas . ' { "@type": "ListItem",
-                    "position": ' . $j . ',
-                    "item":{
-                        "@id":"' . get_permalink() . '",
-                        "name":"Catálogo"
-                    }
-                }' . $poner_coma;
-            } else {
-                $script_migas = $script_migas . ' { "@type": "ListItem",
-                    "position": ' . $j . ',
-                    "item":{
-                        "@id":"' . get_permalink() . '/' . $nodo->catID . '/' . $this->daterium_url_title($nodo->nombre) . '",
-                        "name":"' . filter_var($nodo->nombre, FILTER_SANITIZE_ADD_SLASHES, FILTER_NULL_ON_FAILURE) . '"
-                    }
-                }' . $poner_coma;
-            }
-            $j = $j + 1;
-        }
-
-        $script_migas = $script_migas . '] } </script>' . "\n";
-
-        return $script_migas;
-    }
+    
 
     /**
      * Función para obtener la clasificación AECOC.

@@ -5,11 +5,7 @@ defined('ABSPATH') or exit;
 <main id="primary" class="site-main">
 
   <?php if ($carga_producto_erronea == false) { ?>
-    <?php if ($pid_erroneo == false) {
-      echo $ruta;
-    } ?>
-
-
+    
     <div class="wrap">
       <?php if ($pid_erroneo == true) { ?>
         <h3>Producto no encontrado</h3>
@@ -647,7 +643,7 @@ defined('ABSPATH') or exit;
       </div>
     <?php } ?>
     <?php echo $script_schema_producto;
-    echo $script_migas_pan; ?>
+     ?>
 
   <?php } else { ?>
     <h3>Producto no encontrado</h3>

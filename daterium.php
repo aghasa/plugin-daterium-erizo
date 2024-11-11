@@ -28,7 +28,6 @@ $daterium_userid;
 $daterium_userid = $metodos_bbdd->get_id_rf();
 $daterium_id_marca;
 $daterium_id_marca = $metodos_bbdd->get_id_marca();
-
 $imagen = "";
 
 
@@ -82,12 +81,13 @@ function daterium_print()
 function set_title($title)
 {
     global $daterium_userid;
+    global $daterium_id_marca;
 
     $producto = intval(get_query_var('producto'));
 
     if ($producto != 0) {
         require_once(DATERIUM_PLUGIN_DIR . 'title_controller.php');
-        $title = daterium_get_title($producto, $daterium_userid);
+        $title = daterium_get_title($producto, $daterium_userid, $daterium_id_marca);
     }
     return $title;
 }
