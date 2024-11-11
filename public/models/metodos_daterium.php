@@ -21,7 +21,7 @@ class Metodos_Daterium
         $this->metodos = new Metodos_bbdd();
         global $daterium_userid;
         $this->userID = $daterium_userid;
-        $this->catalogo_inicial = $this->metodos->get_catalogo_inicial();
+        $this->catalogo_inicial = $this->metodos->get_id_marca();
     }
 
     /**
@@ -129,7 +129,7 @@ class Metodos_Daterium
                 'imagen' => strval($nodo->img500x500),
                 'descripcion' => strval($nodo->descripcion_corta),
                 'extra' => '',
-                'url' => site_url() . '/' . basename(get_permalink(get_the_ID())) . '/producto/' . intval($nodo->pID) . '/' . $this->daterium_url_title($nodo->nombre),
+                'url' => site_url() . '/' . basename(get_permalink(get_the_ID())) . '/id/' . intval($nodo->pID) . '/' . $this->daterium_url_title($nodo->nombre),
                 'activo' => $activo,
                 'novedad' => $novedad,
                 'referencias' => $referencias,
@@ -171,7 +171,7 @@ class Metodos_Daterium
                 'imagen' => strval($nodo->imagenes->imagen->img500x500),
                 'descripcion' => strval($nodo->descripcion_corta),
                 'extra' => '',
-                'url' => site_url() . '/' . basename(get_permalink(get_the_ID())) . '/producto/' . intval($nodo->pID) . '/' . $this->daterium_url_title($nodo->nombre),
+                'url' => site_url() . '/' . basename(get_permalink(get_the_ID())) . '/id/' . intval($nodo->pID) . '/' . $this->daterium_url_title($nodo->nombre),
                 'activo' => $activo,
                 'novedad' => $novedad,
                 'familia' => strval($nodo->familia),

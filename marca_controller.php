@@ -7,8 +7,6 @@ $productos_hijos = [];
 
 $carga_marca_erronea = true;
 
-echo 'ID de marca: ' . $dato . '<br>';
-
 $url_marca = 'https://api.dateriumsystem.com/productos_marca_xml.php?idmarca=' . $dato . '&userID=' . $daterium_userid;
 
 $xml_marca = $metodos_daterium->daterium_get_data_url($url_marca);

@@ -563,7 +563,7 @@ defined('ABSPATH') or exit;
           <?php foreach ($datos_relacionados as $relacionado) { ?>
 
             <div class="daterium-producto-relacionado">
-              <a href="<?php echo get_permalink() . '/producto/' . $relacionado['pID']; ?>">
+              <a href="<?php echo get_permalink() . '/id/' . $relacionado['pID']; ?>">
                 <div class="daterium-producto-relacionado-inner">
                   <div class="daterium-producto-relacionado-foto">
                     <img class="imagen-relacionados" decoding="async" src="<?php echo $relacionado['imagen']; ?>" alt="<?php echo $relacionado['nombre']; ?>" />

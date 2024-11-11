@@ -159,9 +159,18 @@ class Metodos_bbdd
   /**
    * Función para obtener el catalogo inicial
    */
-  function get_catalogo_inicial()
+  function get_id_marca()
   {
-    return 1004250;
+    try {
+      global $wpdb;
+      $prefix = $wpdb->prefix . "daterium_";
+      $tabla = $prefix . 'variable';
+      $query = "SELECT valor FROM {$tabla} WHERE codigo ='id-marca' LIMIT 1";
+      $valor = $wpdb->get_results($query);
+      return $valor[0]->valor;
+    } catch (Exception $e) {
+      return 0;
+    }
   }
 
 
