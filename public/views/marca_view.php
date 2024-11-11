@@ -13,10 +13,7 @@ defined('ABSPATH') or exit;
         </header>
 
         <div class="wrap">
-            <div class="daterium-logo-brand">
-                <img src="https://tarifa.aghasaturis.com/img/marcas/<?php echo $dato; ?>.svg" decoding="async"
-                    alt="<?php echo $nombre_marca; ?>" />
-            </div>
+            
             <div class="daterium-brand-box">
                 <div class="daterium-brand">
                     <?php
