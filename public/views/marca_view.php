@@ -49,11 +49,11 @@ defined('ABSPATH') or exit;
                                                                     <?php echo $apartado['nombre']; ?>
 
                                                                 </h5>
-                                                                <div class="daterium-flecha-contenedor">
+                                                                <div class="daterium-flecha-contenedor" onclick="window.location.href='#mf<?php echo $apartado['url']; ?>'">
                                                                     <a class="daterium-flecha-producto"
                                                                         href="<?php echo $apartado['url']; ?>"
                                                                         title="<?php echo $apartado['nombre']; ?>">
-                                                                        ➛
+                                                                        ➜
                                                                     </a>
                                                                 </div>
                                                             </div>
