@@ -38,30 +38,22 @@ defined('ABSPATH') or exit;
                                     <div class="daterium-lista-categorias-container">
                                         <div class="daterium-lista-categorias daterium-lista-marcas">
                                             <?php foreach ($productos_subfamilia as $apartado) { ?>
-                                                <div class="daterium-categoria" id="<?php echo $apartado['id']; ?>">
-                                                    <a href="<?php echo $apartado['url']; ?>"
-                                                        title="<?php echo $apartado['nombre']; ?>">
-                                                        <div class="daterium-list-inner">
-                                                            <img loading="auto" src="<?php echo $apartado['imagen']; ?>"
-                                                                alt="<?php echo $apartado['nombre']; ?>" />
-                                                            <div class="daterium-list-title-container">
-                                                                <h5 class="daterium-list-title">
-                                                                    <?php echo $apartado['nombre']; ?>
-
-                                                                </h5>
-                                                                <div class="daterium-flecha-contenedor">
-                                                                    <a class="daterium-flecha-producto"
-                                                                        href="<?php echo $apartado['url']; ?>"
-                                                                        title="<?php echo $apartado['nombre']; ?>">
-                                                                        ➜
-                                                                    </a>
-                                                                </div>
+                                                <a href="<?php echo $apartado['url']; ?>" title="<?php echo $apartado['nombre']; ?>"
+                                                    class="daterium-categoria" id="<?php echo $apartado['id']; ?>">
+                                                    <div class="daterium-list-inner">
+                                                        <img loading="auto" src="<?php echo $apartado['imagen']; ?>"
+                                                            alt="<?php echo $apartado['nombre']; ?>" />
+                                                        <div class="daterium-list-title-container">
+                                                            <h5 class="daterium-list-title">
+                                                                <?php echo $apartado['nombre']; ?>
+                                                            </h5>
+                                                            <div class="daterium-flecha-contenedor">
+                                                                <span class="daterium-flecha-producto">➜</span>
                                                             </div>
                                                         </div>
-                                                    </a>
-                                                </div>
+                                                    </div>
+                                                </a>
                                             <?php } ?>
-
                                         </div>
                                     </div>
                                 </div>

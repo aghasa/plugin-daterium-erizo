@@ -248,66 +248,62 @@ defined('ABSPATH') or exit;
         </div>
 
         <div id="masinfo" class="ocultar daterium-info-expand">
-          <div class="info-div">
-            <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Artículo: </span><span id="deno">
-                <?php echo $datos_referencias[0]['descripcion']; ?>
-              </span></p>
-          </div>
-          <div class="info-div">
-            <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Referencia: </span><span id="ref_in">
-                <?php echo $datos_referencias[0]['ref']; ?>
-              </span></p>
-          </div>
-          <div class="info-div">
-            <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Código EAN: </span><span id="ean">
-                <?php echo $datos_referencias[0]['ean']; ?>
-              </span></p>
-          </div>
-          <div class="info-div">
-            <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Marca: </span><span>
-                <?php echo $nombre_marca; ?>
-              </span></p>
+          <div class="daterium-info-bloques">
+            <h5 class="daterium-info-title">Datos principales:</h5>
+            <div class="info-div">
+              <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Artículo: </span><span id="deno">
+                  <?php echo $datos_referencias[0]['descripcion']; ?>
+                </span></p>
+            </div>
+            <div class="info-div">
+              <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Referencia: </span><span
+                  id="ref_in">
+                  <?php echo $datos_referencias[0]['ref']; ?>
+                </span></p>
+            </div>
+            <div class="info-div">
+              <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Código EAN: </span><span id="ean">
+                  <?php echo $datos_referencias[0]['ean']; ?>
+                </span></p>
+            </div>
           </div>
 
           <?php if ($datos_referencias[0]['caracteristicas'] != '') { ?>
-            <h5 class="daterium-info-title">Caracteristicas</h5>
-            <div id="carac">
-              <?php echo $datos_referencias[0]['caracteristicas']; ?>
+            <div class="daterium-info-bloques">
+              <h5 class="daterium-info-title">Caracteristicas</h5>
+              <div id="carac">
+                <?php echo $datos_referencias[0]['caracteristicas']; ?>
+              </div>
             </div>
           <?php } ?>
 
           <?php if ($datos_referencias[0]['dimensiones'] != '') { ?>
-            <h5 class="daterium-info-title">Dimensiones</h5>
-            <div id="rf_dimensiones">
-              <?php echo $datos_referencias[0]['dimensiones']; ?>
+            <div class="daterium-info-bloques">
+              <h5 class="daterium-info-title">Dimensiones</h5>
+              <div id="rf_dimensiones">
+                <?php echo $datos_referencias[0]['dimensiones']; ?>
+              </div>
             </div>
           <?php } ?>
 
-          <h5 class="daterium-info-title">Tarifa</h5>
-          <div class="info-div">
-            <p class="daterium-producto-info"><span class="daterium-producto-info-cab">PVR (precio antes de impuestos):
-              </span><span id="precio">
-                <?php
+          <div class="daterium-info-bloques">
+            <h5 class="daterium-info-title">Tarifa</h5>
+            <div class="info-div">
+              <p class="daterium-producto-info"><span class="daterium-producto-info-cab">PVR (precio antes de impuestos):
+                </span><span id="precio">
+                  <?php
 
-                echo $datos_referencias[0]['precio_recomendado'] . '€';
+                  echo $datos_referencias[0]['precio_recomendado'] . '€';
 
-                ?>
-              </span>
+                  ?>
+                </span>
 
-            </p>
+              </p>
+            </div>
           </div>
-          <div class="info-div">
-            <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Familia descuento: </span><span
-                id="fan_dto">
-                <?php echo $datos_referencias[0]['fan_dto']; ?>
-              </span></p>
-          </div>
-          <div class="info-div">
-            <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Tipo IVA: </span><span id="tipo_IVA">
-                <?php echo $datos_referencias[0]['tipo_IVA']; ?>
-              </span></p>
-          </div>
+
           <?php if ($datos_referencias[0]['uni_pre'] != '') { ?>
+
             <div class="info-div">
               <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Unidad precio: </span><span
                   id="uni_pre">
@@ -322,132 +318,132 @@ defined('ABSPATH') or exit;
             </div>
           <?php } ?>
 
-          <h5 class="daterium-info-title">Datos packaging</h5>
-          <div class="info-div">
-            <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Cantidad de contenido: </span><span
-                id="cant_cont">
-                <?php echo $datos_referencias[0]['cant_cont']; ?>
-              </span></p>
-          </div>
-          <div class="info-div">
-            <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Unidad de contenido: </span><span
-                id="uni_cont">
-                <?php echo $datos_referencias[0]['uni_cont']; ?>
-              </span></p>
-          </div>
-          <?php if (strlen($datos_referencias[0]['peso']) > 2) { ?>
+          <div class="daterium-info-bloques">
+            <h5 class="daterium-info-title">Datos packaging</h5>
             <div class="info-div">
-              <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Peso: </span><span id="peso">
-                  <?php echo $datos_referencias[0]['peso']; ?>
+              <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Cantidad de contenido: </span><span
+                  id="cant_cont">
+                  <?php echo $datos_referencias[0]['cant_cont']; ?>
                 </span></p>
             </div>
-          <?php } ?>
-          <?php if (strlen($datos_referencias[0]['largo']) > 2) { ?>
             <div class="info-div">
-              <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Largo: </span><span id="largo">
-                  <?php echo $datos_referencias[0]['largo']; ?>
+              <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Unidad de contenido: </span><span
+                  id="uni_cont">
+                  <?php echo $datos_referencias[0]['uni_cont']; ?>
                 </span></p>
             </div>
-          <?php } ?>
+            <?php if (strlen($datos_referencias[0]['peso']) > 2) { ?>
+              <div class="info-div">
+                <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Peso: </span><span id="peso">
+                    <?php echo $datos_referencias[0]['peso']; ?>
+                  </span></p>
+              </div>
+            <?php } ?>
+            <?php if (strlen($datos_referencias[0]['largo']) > 2) { ?>
+              <div class="info-div">
+                <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Largo: </span><span id="largo">
+                    <?php echo $datos_referencias[0]['largo']; ?>
+                  </span></p>
+              </div>
+            <?php } ?>
 
-          <?php if (strlen($datos_referencias[0]['ancho']) > 2) { ?>
-            <div class="info-div">
-              <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Ancho: </span><span id="ancho">
-                  <?php echo $datos_referencias[0]['ancho']; ?>
-                </span></p>
-            </div>
-          <?php } ?>
-          <?php if (strlen($datos_referencias[0]['alto']) > 2) { ?>
-            <div class="info-div">
-              <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Alto: </span><span id="alto">
-                  <?php echo $datos_referencias[0]['alto']; ?>
-                </span></p>
-            </div>
-          <?php } ?>
-          <?php if (strlen($datos_referencias[0]['presentacion']) > 2) { ?>
-            <div class="info-div">
-              <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Presentacion: </span><span
-                  id="presentacion">
-                  <?php echo $datos_referencias[0]['presentacion']; ?>
-                </span></p>
-            </div>
-          <?php } ?>
-
-          <h5 class="daterium-info-title">Datos logísticos</h5>
-
-          <?php if (strlen($datos_referencias[0]['up_ean']) > 0) { ?>
-            <div class="info-div">
-              <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Unidad de preparación - código EAN:
-                </span><span id="up_ean">
-                  <?php echo $datos_referencias[0]['up_ean']; ?>
-                </span></p>
-            </div>
-          <?php } ?>
-
-          <?php if ($datos_referencias[0]['up_cantidad'] != 0) { ?>
-            <div class="info-div">
-              <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Unidades contenidas en un embalaje
-                  (Master Carton):
-                </span><span id="up_cantidad">
-                  <?php echo $datos_referencias[0]['up_cantidad']; ?>
-                </span></p>
-            </div>
-          <?php } ?>
-
-          <?php if ($datos_referencias[0]['up_peso'] != 0) { ?>
-            <div class="info-div">
-              <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Unidad de preparación - peso:
-                </span><span id="up_peso">
-                  <?php echo $datos_referencias[0]['up_peso']; ?>
-                </span></p>
-            </div>
-          <?php } ?>
-
-          <?php if ($datos_referencias[0]['up_largo'] != 0) { ?>
-            <div class="info-div">
-              <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Unidad de preparación - largo:
-                </span><span id="up_largo">
-                  <?php echo $datos_referencias[0]['up_largo']; ?>
-                </span></p>
-            </div>
-          <?php } ?>
-
-          <?php if ($datos_referencias[0]['up_ancho'] != 0) { ?>
-            <div class="info-div">
-              <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Unidad de preparación - ancho:
-                </span><span id="up_ancho">
-                  <?php echo $datos_referencias[0]['up_ancho']; ?>
-                </span></p>
-            </div>
-          <?php } ?>
-
-          <?php if ($datos_referencias[0]['up_alto'] != 0) { ?>
-            <div class="info-div">
-              <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Unidad de preparación - alto:
-                </span><span id="up_alto">
-                  <?php echo $datos_referencias[0]['up_alto']; ?>
-                </span></p>
-            </div>
-          <?php } ?>
-          <div class="info-div">
-            <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Disponible en dropshipping:
-              </span><span id="dropshipping">
-                <?php echo $datos_referencias[0]['dropshipping']; ?>
-              </span></p>
+            <?php if (strlen($datos_referencias[0]['ancho']) > 2) { ?>
+              <div class="info-div">
+                <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Ancho: </span><span id="ancho">
+                    <?php echo $datos_referencias[0]['ancho']; ?>
+                  </span></p>
+              </div>
+            <?php } ?>
+            <?php if (strlen($datos_referencias[0]['alto']) > 2) { ?>
+              <div class="info-div">
+                <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Alto: </span><span id="alto">
+                    <?php echo $datos_referencias[0]['alto']; ?>
+                  </span></p>
+              </div>
+            <?php } ?>
+            <?php if (strlen($datos_referencias[0]['presentacion']) > 2) { ?>
+              <div class="info-div">
+                <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Presentacion: </span><span
+                    id="presentacion">
+                    <?php echo $datos_referencias[0]['presentacion']; ?>
+                  </span></p>
+              </div>
+            <?php } ?>
           </div>
 
-          <h5 class="daterium-info-title">Estado artículo</h5>
-          <div class="info-div">
-            <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Estado: </span><span id="estado">
-                <?php echo $datos_referencias[0]['estado']; ?>
-              </span></p>
-          </div>
-          <div class="info-div">
-            <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Fecha: </span><span id="estado">
-                <?php echo $datos_referencias[0]['estado_fecha']; ?>
-              </span></p>
+          <div class="daterium-info-bloques">
+            <h5 class="daterium-info-title">Datos logísticos</h5>
+
+            <?php if (strlen($datos_referencias[0]['up_ean']) > 0) { ?>
+              <div class="info-div">
+                <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Unidad de preparación - código EAN:
+                  </span><span id="up_ean">
+                    <?php echo $datos_referencias[0]['up_ean']; ?>
+                  </span></p>
+              </div>
+            <?php } ?>
+
+            <?php if ($datos_referencias[0]['up_cantidad'] != 0) { ?>
+              <div class="info-div">
+                <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Unidades contenidas en un embalaje
+                    (Master Carton):
+                  </span><span id="up_cantidad">
+                    <?php echo $datos_referencias[0]['up_cantidad']; ?>
+                  </span></p>
+              </div>
+            <?php } ?>
+
+            <?php if ($datos_referencias[0]['up_peso'] != 0) { ?>
+              <div class="info-div">
+                <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Unidad de preparación - peso:
+                  </span><span id="up_peso">
+                    <?php echo $datos_referencias[0]['up_peso']; ?>
+                  </span></p>
+              </div>
+            <?php } ?>
+
+            <?php if ($datos_referencias[0]['up_largo'] != 0) { ?>
+              <div class="info-div">
+                <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Unidad de preparación - largo:
+                  </span><span id="up_largo">
+                    <?php echo $datos_referencias[0]['up_largo']; ?>
+                  </span></p>
+              </div>
+            <?php } ?>
+
+            <?php if ($datos_referencias[0]['up_ancho'] != 0) { ?>
+              <div class="info-div">
+                <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Unidad de preparación - ancho:
+                  </span><span id="up_ancho">
+                    <?php echo $datos_referencias[0]['up_ancho']; ?>
+                  </span></p>
+              </div>
+            <?php } ?>
+
+            <?php if ($datos_referencias[0]['up_alto'] != 0) { ?>
+              <div class="info-div">
+                <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Unidad de preparación - alto:
+                  </span><span id="up_alto">
+                    <?php echo $datos_referencias[0]['up_alto']; ?>
+                  </span></p>
+              </div>
+            <?php } ?>
           </div>
 
+          <div class="daterium-info-bloques">
+            <h5 class="daterium-info-title">Estado artículo</h5>
+            <div class="info-div">
+              <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Estado: </span><span id="estado">
+                  <?php echo $datos_referencias[0]['estado']; ?>
+                </span></p>
+            </div>
+            <div class="info-div">
+              <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Fecha: </span><span id="estado">
+                  <?php echo $datos_referencias[0]['estado_fecha']; ?>
+                </span></p>
+            </div>
+          </div>
+          
           <?php
           if ($datos_referencias[0]['docu_ref'] != '') { ?>
             <h5 class="daterium-info-title">Descargas y enlaces adicionales de la referencia</h5>
