@@ -191,6 +191,7 @@ function ver_datos(id) {
   if (estado_fecha != null) {
     document.getElementById("estado_fecha").innerHTML = datos[id].estado_fecha;
   }
+
 }
 
 set_datos();

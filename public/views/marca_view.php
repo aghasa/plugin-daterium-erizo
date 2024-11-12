@@ -49,7 +49,7 @@ defined('ABSPATH') or exit;
                                                                     <?php echo $apartado['nombre']; ?>
 
                                                                 </h5>
-                                                                <div class="daterium-flecha-contenedor" onclick="window.location.href='#mf<?php echo $apartado['url']; ?>'">
+                                                                <div class="daterium-flecha-contenedor">
                                                                     <a class="daterium-flecha-producto"
                                                                         href="<?php echo $apartado['url']; ?>"
                                                                         title="<?php echo $apartado['nombre']; ?>">
@@ -79,11 +79,9 @@ defined('ABSPATH') or exit;
                             $familiaId = 0;
                             foreach ($productos_hijos as $familia => $productos_familia) {
                                 ?>
-                                <li class="daterium-brand-menu-list-item"
-                                    onclick="window.location.href='#mf<?php echo $familiaId; ?>'">
+                                <li class="daterium-brand-menu-list-item">
                                     <h5 class="daterium-brand-menu-list-title">
-                                        <a href="#mf<?php echo $familiaId; ?>" alt="<?php echo $familia; ?>"
-                                            data-original-text="<?php echo $familia; ?>">
+                                        <a alt="<?php echo $familia; ?>" data-original-text="<?php echo $familia; ?>">
                                             <?php echo $familia; ?>
                                         </a>
                                         <span class="daterium-toggle-button"
@@ -96,8 +94,7 @@ defined('ABSPATH') or exit;
                                         foreach ($productos_familia as $subfamilia => $productos_subfamilia) {
                                             ?>
                                             <li class="daterium-brand-menu-subitem">
-                                                <a href="#mf<?php echo $familiaId; ?>sf<?php echo $subfamiliaId; ?>"
-                                                    alt="<?php echo $subfamilia; ?>">
+                                                <a alt="<?php echo $subfamilia; ?>">
                                                     <?php echo $subfamilia; ?>
                                                 </a>
                                             </li>

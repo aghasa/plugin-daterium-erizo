@@ -149,7 +149,7 @@ function daterium_url()
     $producto = intval(get_query_var('producto'));
 
     if ($producto != 0) {
-        return get_permalink() . '/id/' . $producto;
+        return get_permalink() . '/' . $producto;
 
     }
 }
@@ -188,8 +188,8 @@ function set_meta_tags()
     $producto = intval(get_query_var('producto'));
 
     if ($producto != 0) {
-            echo '<link rel="canonical" href="' . get_permalink() . '/id/' . $producto . '">' . "\n";
-            echo '<link rel="shortlink" href="' . get_permalink() . '/id/' . $producto . '">' . "\n";
+            echo '<link rel="canonical" href="' . get_permalink() . '/' . $producto . '">' . "\n";
+            echo '<link rel="shortlink" href="' . get_permalink() . '/' . $producto . '">' . "\n";
             echo '<meta property="og:image" content="' . $imagen . '" />' . "\n";
     }
 }
@@ -227,7 +227,7 @@ function daterium_rewrite()
 {
 
     add_rewrite_rule(
-        '^productos/id/?/([^/]*)',
+        '^productos/?/([^/]*)',
         'index.php?page_id=24&producto=$matches[1]',
         'top'
     );

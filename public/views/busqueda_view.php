@@ -7,7 +7,7 @@ if ($carga_busqueda_erronea == false) {
             <div class="daterium-lista-categorias">
                 <?php foreach ($datos_productos as $dato) { ?>
                     <div class="daterium-categoria" id="<?php echo $dato["pID"] ?>">
-                        <a href="<?php echo get_permalink() ?>/id/<?php echo $dato["pID"] . '/' . $dato["url"]; ?>"
+                        <a href="<?php echo get_permalink() ?>/<?php echo $dato["pID"] . '/' . $dato["url"]; ?>"
                             alt="<?php echo $dato["nombre"]; ?>">
                             <div class="daterium-list-inner">
                                 <div class="daterium-list-brand">
