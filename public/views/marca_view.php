@@ -76,9 +76,9 @@ defined('ABSPATH') or exit;
                                         <a alt="<?php echo $familia; ?>" data-original-text="<?php echo $familia; ?>">
                                             <?php echo $familia; ?>
                                         </a>
-                                        <span class="daterium-toggle-button"
-                                            data-target="subfamilia<?php echo $familiaId; ?>">&#9660;
-                                        </span>
+                                            <span class="daterium-toggle-button"
+                                                data-target="subfamilia<?php echo $familiaId; ?>">&#8594;
+                                            </span>
                                     </h5>
                                     <ul class="daterium-subfamilia-list">
                                         <?php
