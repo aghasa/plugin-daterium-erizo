@@ -201,17 +201,28 @@ function set_meta_tags()
 /****************************************************
  * Función para añadir los scripts en los productos *
  ***************************************************/
-function set_js()
-{
+function set_js() {
     $producto = intval(get_query_var('producto'));
     if ($producto != 0) {
-        wp_register_script('imagenes_function', plugins_url('public/script/imagenes_function.js', __FILE__), array(), '', false);
+        wp_register_script('imagenes_function', plugins_url('public/script/imagenes_function.js', __FILE__), array(), '', true);
         wp_register_script('producto_function', plugins_url('public/script/producto_function.js', __FILE__), array(), '', true);
         wp_enqueue_script('imagenes_function');
         wp_enqueue_script('producto_function');
+
+        add_filter('script_loader_tag', 'add_defer_attribute', 10, 2);
     }
 }
+
+// asegura que los scripts se ejecuten después de que el contenido HTML esté cargado 
+function add_defer_attribute($tag, $handle) {
+    if ('imagenes_function' === $handle || 'producto_function' === $handle) {
+        return str_replace(' src', ' defer="defer" src', $tag);
+    }
+    return $tag;
+}
+
 add_action('wp_print_scripts', 'set_js');
+
 
 
 /*********************************************************** 
@@ -255,16 +266,7 @@ add_action('init', 'daterium_rewrite');
  * Acciones  y funciones para la carga correcta del plugin *
  * de las secciones en el menu de administrador segun rol  * 
  **********************************************************/
-/**
- * Función que muestra los distribuidores
- */
-function show_distribuidores()
-{
-    require_once(DATERIUM_PLUGIN_DIR . 'public/models/metodos_bbdd.php');
-    $metodos_bbdd = new Metodos_bbdd();
-    $distribuidores = $metodos_bbdd->get_distribuidores();
-    require_once(DATERIUM_PLUGIN_DIR . 'public/views/distribuidores_view.php');
-}
+
 
 
 /**
@@ -295,16 +297,8 @@ function show_items_menu()
 {
     $user = wp_get_current_user();
 
-    if (in_array('contributor', (array) $user->roles)) {
-        add_menu_page('Distribuidores', 'Distribuidores', 'contributor', 'distribuidores_view.php', 'show_distribuidores', 'dashicons-groups');
-    }
-
-    if (in_array('editor', (array) $user->roles)) {
-        add_menu_page('Distribuidores', 'Distribuidores', 'editor', 'distribuidores_view.php', 'show_distribuidores', 'dashicons-groups');
-    }
 
     if (in_array('administrator', (array) $user->roles)) {
-        add_menu_page('Distribuidores', 'Distribuidores', 'administrator', 'distribuidores_view.php', 'show_distribuidores', 'dashicons-groups');
         add_menu_page('Variables Entorno', 'Variables Entorno', 'administrator', 'variables_view.php', 'show_variables', 'dashicons-smiley');
     }
 }

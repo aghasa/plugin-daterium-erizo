@@ -45,8 +45,16 @@ function copiar_portapapeles(valor) {
  */
 function set_datos() {
   var var_codi = jsVar_producto;
+
+  if (typeof jsVar_producto === 'undefined') {
+    console.error('Error: jsVar_producto no está definida');
+    return;
+  }
+
   var decodificada = atob(var_codi);
   datos = JSON.parse(decodificada);
+
+  console.log("Datos cargados:", datos);
 }
 
 /**
@@ -61,6 +69,8 @@ function get_datos_producto() {
  * @param {*} id
  */
 function ver_datos(id) {
+
+  console.log("ID de ver_datos: ", id);
   mostrar_datos("masinfo", true);
 
   document.getElementById("deno").innerHTML = datos[id].descripcion;
@@ -74,9 +84,7 @@ function ver_datos(id) {
     document.getElementById("precio").innerHTML =
       datos[id].precio_recomendado + "€";
   }
-  document.getElementById("fan_dto").innerHTML = datos[id].fan_dto;
-  document.getElementById("tipo_IVA").innerHTML = datos[id].tipo_IVA;
-
+  
   var existe_uni_pre = document.getElementById("uni_pre");
   if (existe_uni_pre != null) {
     document.getElementById("uni_pre").innerHTML = datos[id].uni_pre;

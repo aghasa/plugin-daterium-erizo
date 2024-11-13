@@ -436,23 +436,6 @@ class Metodos_Daterium
             if ($i != $tamanio_array) {
                 $poner_coma = ',';
             }
-            switch ($referencia['valor_stock']) {
-                case 1:
-                    $text_stock = 'BackOrder';
-                    break;
-                case 2:
-                    $text_stock = 'LimitedAvailability';
-                    break;
-                case 3:
-                    $text_stock = 'InStock';
-                    break;
-                case 4:
-                    $text_stock = 'PreOrder';
-                    break;
-                default:
-                    $text_stock = 'OutOfStock';
-                    break;
-            }
 
             $descripcion_referencia = json_encode($descripcion_texto_plano, JSON_UNESCAPED_UNICODE);
             if (isset($descripcion_referencia)) {
@@ -470,7 +453,6 @@ class Metodos_Daterium
                     "priceCurrency":"EUR",
                     "price":"' . $referencia['precio_script'] . '",
                     "eligibleQuantity":"' . $referencia['cant_cont'] . '",
-                    "availability":"https://schema.org/' . $text_stock . '",
                     "url":"https://' . $url . '",
                     "itemCondition":"https://schema.org/NewCondition",
                     "seller" : {
@@ -506,7 +488,6 @@ class Metodos_Daterium
             $ean = strval($referencia->ean);
             $codiart = strval($referencia->codiart);
             $imagen = strval($referencia->vinculos->imagenes->imagen->img280x240);
-            $valor_stock = $this->metodos->get_stock($codiart);
             $nombres_atributos_diferenciadores = $this->get_nombre_atributos_diferenciadores($xml);
             $datos_atributos_diferenciadores = $this->get_datos_atributos_diferenciadores($referencia);
             $nombres_caracteristicas = $this->get_nombre_caracteristicas($xml);
@@ -516,8 +497,8 @@ class Metodos_Daterium
             $pre_tarifa = number_format((float) $referencia->tarifa->precio_tarifa, 4, ',', '');
             $precio_script = number_format((float) $referencia->tarifa->precio_recomendado, 2, '.', '');
             $precio_recomendado = number_format((float) $referencia->tarifa->precio_recomendado, 2, ',', '');
-            $fam_descuento = strval($referencia->tarifa->familia_descuento);
-            $tipo_iva = strval($referencia->tarifa->tipo_iva);
+            // $fam_descuento = strval($referencia->tarifa->familia_descuento);
+            // $tipo_iva = strval($referencia->tarifa->tipo_iva);
             $unidad_precio = strval($referencia->tarifa->unidad_precio);
             $cantidad_minima = strval($referencia->tarifa->cantidad_minima);
             +$cant_cont = strval($referencia->datos_packaging->cantidad_contenido);
@@ -598,9 +579,10 @@ class Metodos_Daterium
 
             $documentos = $this->get_documentos_ref($referencia);
 
-            $datos_referencias[$i] = ['descripcion' => $descripcion, 'ref' => $ref, 'ean' => $ean, 'caracteristicas' => $completo_caracteristica, 'dimensiones' => $dimensiones, 'precio' => $pre_tarifa, 'precio_script' => $precio_script, 'precio_recomendado' => $precio_recomendado, 'fan_dto' => $fam_descuento, 'tipo_IVA' => $tipo_iva, 'uni_pre' => $unidad_precio, 'cant_min' => $cantidad_minima, 'cant_cont' => $cant_cont, 'uni_cont' => $uni_cont, 'peso' => $peso, 'largo' => $largo, 'ancho' => $ancho, 'alto' => $alto, 'presentacion' => $presentacion, 'un_entrega' => $un_entrega, 'up_ean' => $up_ean, 'up_cantidad' => $up_cantidad, 'up_peso' => $up_peso, 'up_largo' => $up_largo, 'up_ancho' => $up_ancho, 'up_alto' => $up_alto, 'dropshipping' => $dropshipping, 'estado' => $estado, 'estado_fecha' => $estado_fecha, 'codiart' => $codiart, 'docu_ref' => $documentos, 'valor_stock' => $valor_stock, 'imagen' => $imagen, 'nombre_caracteristicas' => $nombres_caracteristicas, 'datos_caracteristicas' => $datos_caracteristicas, 'nombres_atributos_diferenciadores' => $nombres_atributos_diferenciadores, 'datos_atributos_diferenciadores' => $datos_atributos_diferenciadores];
+            $datos_referencias[$i] = ['descripcion' => $descripcion, 'ref' => $ref, 'ean' => $ean, 'caracteristicas' => $completo_caracteristica, 'dimensiones' => $dimensiones, 'precio' => $pre_tarifa, 'precio_script' => $precio_script, 'precio_recomendado' => $precio_recomendado, 'uni_pre' => $unidad_precio, 'cant_min' => $cantidad_minima, 'cant_cont' => $cant_cont, 'uni_cont' => $uni_cont, 'peso' => $peso, 'largo' => $largo, 'ancho' => $ancho, 'alto' => $alto, 'presentacion' => $presentacion, 'un_entrega' => $un_entrega, 'up_ean' => $up_ean, 'up_cantidad' => $up_cantidad, 'up_peso' => $up_peso, 'up_largo' => $up_largo, 'up_ancho' => $up_ancho, 'up_alto' => $up_alto, 'dropshipping' => $dropshipping, 'estado' => $estado, 'estado_fecha' => $estado_fecha, 'codiart' => $codiart, 'docu_ref' => $documentos,  'imagen' => $imagen, 'nombre_caracteristicas' => $nombres_caracteristicas, 'datos_caracteristicas' => $datos_caracteristicas, 'nombres_atributos_diferenciadores' => $nombres_atributos_diferenciadores, 'datos_atributos_diferenciadores' => $datos_atributos_diferenciadores];
 
             $i = $i + 1;
+            //  'fan_dto' => $fam_descuento, 'tipo_IVA' => $tipo_iva,
         }
 
         return $datos_referencias;

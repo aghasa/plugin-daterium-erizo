@@ -48,7 +48,7 @@ defined('ABSPATH') or exit;
                                                                 <?php echo $apartado['nombre']; ?>
                                                             </h5>
                                                             <div class="daterium-flecha-contenedor">
-                                                                <span class="daterium-flecha-producto">➜</span>
+                                                                <span class="daterium-flecha-producto">🡪</span>
                                                             </div>
                                                         </div>
                                                     </div>

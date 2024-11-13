@@ -49,7 +49,7 @@ defined('ABSPATH') or exit;
             </div>
           <?php } ?>
 
-          <div class="daterium-text-producto">
+          <div class="text-cabecera">
             <?php if (count($puntos_clave) > 0) {
               ?>
               <ul class="daterium-puntos-clave">
@@ -240,7 +240,7 @@ defined('ABSPATH') or exit;
         <div id="masinfo" class="ocultar daterium-info-expand">
           <div class="daterium-referencia-flex">
             <div class="daterium-info-bloques">
-              <h5 class="daterium-info-title">Datos principales:</h5>
+              <h5 class="daterium-info-title">Datos principales</h5>
               <div class="info-div">
                 <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Artículo: </span><span id="deno">
                     <?php echo $datos_referencias[0]['descripcion']; ?>
