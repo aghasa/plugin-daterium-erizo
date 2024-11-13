@@ -31,21 +31,11 @@ defined('ABSPATH') or exit;
                 </div>
               <?php } ?>
               <div class="daterium-producto-img-buttons">
-                <a class="prev" onclick="plusSlides(-1)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                    viewBox="0 0 24 24" fill="none" stroke="#1f1d1d" stroke-width="2.5" stroke-linecap="round"
-                    stroke-linejoin="round" class="feather feather-arrow-left">
-                    <line x1="19" y1="12" x2="5" y2="12"></line>
-                    <polyline points="12 19 5 12 12 5"></polyline>
-                  </svg>
+                <a class="prev daterium-" onclick="plusSlides(-1)">
+                  ⭠
                 </a>
-                <a class="next" onclick="plusSlides(1)"><svg xmlns="http://www.w3.org/2000/svg"
-                    class="icon icon-tabler icon-tabler-arrow-right" width="24" height="24" viewBox="0 0 24 24"
-                    stroke-width="3" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <line x1="13" y1="18" x2="19" y2="12" />
-                    <line x1="13" y1="6" x2="19" y2="12" />
-                  </svg>
+                <a class="next" onclick="plusSlides(1)">
+                  ⭢
                 </a>
               </div>
             </div>
@@ -59,7 +49,7 @@ defined('ABSPATH') or exit;
             </div>
           <?php } ?>
 
-          <div class="text-cabecera">
+          <div class="daterium-text-producto">
             <?php if (count($puntos_clave) > 0) {
               ?>
               <ul class="daterium-puntos-clave">
@@ -302,23 +292,22 @@ defined('ABSPATH') or exit;
 
                 </p>
               </div>
+              <?php if ($datos_referencias[0]['uni_pre'] != '') { ?>
+
+                <div class="info-div">
+                  <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Unidad precio: </span><span
+                      id="uni_pre">
+                      <?php echo $datos_referencias[0]['uni_pre']; ?>
+                    </span></p>
+                </div>
+                <div class="info-div">
+                  <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Condicionante de compra:
+                    </span> Múltiplos de <span id="un_entrega">
+                      <?php echo $datos_referencias[0]['un_entrega']; ?>
+                    </span></p>
+                </div>
+              <?php } ?>
             </div>
-
-            <?php if ($datos_referencias[0]['uni_pre'] != '') { ?>
-
-              <div class="info-div">
-                <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Unidad precio: </span><span
-                    id="uni_pre">
-                    <?php echo $datos_referencias[0]['uni_pre']; ?>
-                  </span></p>
-              </div>
-              <div class="info-div">
-                <p class="daterium-producto-info"><span class="daterium-producto-info-cab">Condicionante de compra:
-                  </span> Múltiplos de <span id="un_entrega">
-                    <?php echo $datos_referencias[0]['un_entrega']; ?>
-                  </span></p>
-              </div>
-            <?php } ?>
 
             <div class="daterium-info-bloques">
               <h5 class="daterium-info-title">Datos packaging</h5>
