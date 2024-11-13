@@ -45,16 +45,8 @@ function copiar_portapapeles(valor) {
  */
 function set_datos() {
   var var_codi = jsVar_producto;
-
-  if (typeof jsVar_producto === 'undefined') {
-    console.error('Error: jsVar_producto no está definida');
-    return;
-  }
-
   var decodificada = atob(var_codi);
   datos = JSON.parse(decodificada);
-
-  console.log("Datos cargados:", datos);
 }
 
 /**
@@ -69,8 +61,6 @@ function get_datos_producto() {
  * @param {*} id
  */
 function ver_datos(id) {
-
-  console.log("ID de ver_datos: ", id);
   mostrar_datos("masinfo", true);
 
   document.getElementById("deno").innerHTML = datos[id].descripcion;

@@ -70,7 +70,6 @@ if ($xml_producto != 'error') {
         ?>
         <script type="text/javascript">
             let jsVar_producto = <?php echo json_encode($codificado); ?>;
-            console.log("Valor de jsVar_producto:", jsVar_producto);
         </script>
         <?php
 

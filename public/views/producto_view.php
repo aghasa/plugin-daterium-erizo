@@ -453,7 +453,7 @@ defined('ABSPATH') or exit;
 
           <div class="daterium-info-div-cabecera" onclick="mostrar_datos('descargas')">
             <span>Descargas y enlaces </span>
-            <img class="daterium-img-expandir" id="img-descargas" src="<?php echo URL_ROOT; ?>public/img/down.svg"
+            <img  id="img-descargas" src="<?php echo URL_ROOT; ?>public/img/down.svg"
               alt="Expandir">
           </div>
           <div id="descargas" class="ocultar daterium-info-expand">
