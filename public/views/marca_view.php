@@ -1,6 +1,9 @@
 <?php
 defined('ABSPATH') or exit;
 ?>
+<script>
+    let familyActive = 0;
+</script>
 <main id="primary" class="site-main">
     <?php if ($carga_marca_erronea == false) { ?>
         <header class="page-header<?php if (has_post_thumbnail()) { ?> page-header-thumbnail<?php } ?>">
@@ -71,14 +74,13 @@ defined('ABSPATH') or exit;
                             $familiaId = 1;
                             foreach ($productos_hijos as $familia => $productos_familia) {
                                 ?>
-                                <li class="daterium-brand-menu-list-item" onclick="mostrarFamilia(mf<?php echo $familiaId ?>)">
+                                <li id="menu-familia-<?php echo $familiaId ?>" class="daterium-brand-menu-list-item" onclick="mostrarFamilia(mf<?php echo $familiaId ?>)">
                                     <h5 class="daterium-brand-menu-list-title">
                                         <a alt="<?php echo $familia; ?>" data-original-text="<?php echo $familia; ?>">
                                             <?php echo $familia; ?>
                                         </a>
-                                            <span class="daterium-toggle-button"
-                                                data-target="subfamilia<?php echo $familiaId; ?>">+
-                                            </span>
+                                        <span class="daterium-toggle-button">+</span>
+                                        </span>
                                     </h5>
                                     <ul class="daterium-subfamilia-list">
                                         <?php
@@ -111,7 +113,10 @@ defined('ABSPATH') or exit;
         <?php 
 if($param_familia != 0){
     ?>
-    <script>mostrarFamilia(mf<?php echo $param_familia ?>)</script>
+    <script>
+        familyActive = <?php echo $param_familia ?>;
+        mostrarFamilia(<mf?php echo $param_familia ?>);
+        </script>
     <?php
 }
 ?>
