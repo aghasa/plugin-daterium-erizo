@@ -36,8 +36,33 @@ $imagen = "";
  * Definición de los shortcode *
  ******************************/
 add_shortcode('daterium_catalogo', 'daterium_print');
+add_shortcode('daterium_bloque_familias', 'daterium_bloque_familias_print');
 
 
+/************************************************
+ * Funciones para crear el bloque de familias *
+ ***********************************************/
+function daterium_bloque_familias()
+{
+    include_once(DATERIUM_PLUGIN_DIR . 'public/models/metodos_daterium.php');
+    $metodos_daterium = new Metodos_Daterium();
+    $carga_bloque_erronea = true;
+
+        $url_bloque_familias = "http://erizo.test/wp-content/plugins/plugin-daterium-main/public/daterium-familias.xml";
+
+        $xml_bloque_familias = $metodos_daterium->daterium_get_data_url($url_bloque_familias);
+
+            $nombre_familias = $metodos_daterium->daterium_get_family_names($xml_bloque_familias);
+            $carga_bloque_erronea = false;
+       include_once(DATERIUM_PLUGIN_DIR . 'public/views/bloque_familia_view.php');
+}
+
+function daterium_bloque_familias_print()
+{
+    ob_start();
+    daterium_bloque_familias();
+    return ob_get_clean();
+}
 
 /**********************************************
  * Función principal que contrala el catálogo *
@@ -56,6 +81,7 @@ function daterium()
         $metodos_bbdd = new Metodos_bbdd();
 
         $producto = intval(get_query_var('producto'));
+        $param_familia = intval(get_query_var('familia'));
 
         if ($producto != 0 || $producto != null) {
             require_once(DATERIUM_PLUGIN_DIR . 'producto_controller.php');
@@ -232,18 +258,24 @@ add_action('wp_print_scripts', 'set_js');
 function daterium_endpoint()
 {
     add_rewrite_endpoint('producto', EP_PAGES);
+    add_rewrite_endpoint('familia', EP_PAGES);
+
 }
 
 function daterium_rewrite()
 {
 
+
+    add_rewrite_rule(
+        '^productos/familia/?/([^/]*)',
+        'index.php?page_id=24&familia=$matches[1]',
+        'top'
+    );
     add_rewrite_rule(
         '^productos/?/([^/]*)',
         'index.php?page_id=24&producto=$matches[1]',
         'top'
     );
-
-
     add_rewrite_rule(
         '^productos',
         'index.php?page_id=24',

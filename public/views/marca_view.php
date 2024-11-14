@@ -17,7 +17,7 @@ defined('ABSPATH') or exit;
             <div class="daterium-brand-box">
                 <div class="daterium-brand">
                     <?php
-                    $familiaId = 0;
+                    $familiaId = 1;
                     foreach ($productos_hijos as $familia => $productos_familia) {
                         ?>
                         <div class="daterium-brand-family" data-menu-text="<?php echo $familia; ?>"
@@ -68,10 +68,10 @@ defined('ABSPATH') or exit;
                     <div class="daterium-brand-menu-container">
                         <ul class="daterium-brand-menu-list">
                             <?php
-                            $familiaId = 0;
+                            $familiaId = 1;
                             foreach ($productos_hijos as $familia => $productos_familia) {
                                 ?>
-                                <li class="daterium-brand-menu-list-item">
+                                <li class="daterium-brand-menu-list-item" onclick="mostrarFamilia(mf<?php echo $familiaId ?>)">
                                     <h5 class="daterium-brand-menu-list-title">
                                         <a alt="<?php echo $familia; ?>" data-original-text="<?php echo $familia; ?>">
                                             <?php echo $familia; ?>
@@ -108,6 +108,13 @@ defined('ABSPATH') or exit;
                 </div>
             </div>
         </div>
+        <?php 
+if($param_familia != 0){
+    ?>
+    <script>mostrarFamilia(mf<?php echo $param_familia ?>)</script>
+    <?php
+}
+?>
     <?php } else {
         echo '<h3 style="text-align: center;">No es posible conectar con el catálogo online</h3>';
     } ?>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<familias>
+        <familia id="1">
+            <nombre>Limas de mecánico</nombre>
+        </familia>
+        <familia id="2">
+            <nombre>Limas especiales</nombre>
+        </familia>
+        <familia id="3">
+            <nombre>Limas para sierras</nombre>
+        </familia>
+        <familia id="4">
+            <nombre>Escofinas</nombre>
+        </familia>
+        <familia id="5">
+            <nombre>Mangos de limas</nombre>
+        </familia>
+</familias>

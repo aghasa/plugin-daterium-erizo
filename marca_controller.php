@@ -2,19 +2,18 @@
 
 defined('ABSPATH') or exit;
 global $daterium_userid;
-$dato = 11266;
+global $daterium_id_marca;
 $productos_hijos = [];
 
 $carga_marca_erronea = true;
 
-$url_marca = 'https://api.dateriumsystem.com/productos_marca_xml.php?idmarca=' . $dato . '&userID=' . $daterium_userid;
+$url_marca = 'https://api.dateriumsystem.com/productos_marca_xml.php?idmarca=' . $daterium_id_marca . '&userID=' . $daterium_userid;
 
 $xml_marca = $metodos_daterium->daterium_get_data_url($url_marca);
 
 if ($xml_marca != 'error') {
     $productos_hijos = $metodos_daterium->daterium_get_list_products_marca($xml_marca);
 
-    $nombre_marca = $metodos_daterium->get_nombre_marca($dato);
     $carga_marca_erronea = false;
 
 } else {

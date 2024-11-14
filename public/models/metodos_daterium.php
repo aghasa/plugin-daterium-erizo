@@ -9,7 +9,7 @@ class Metodos_Daterium
 {
     public $userID = '';
 
-    public $marcaID='';
+    public $marcaID = '';
 
     public $metodos = null;
 
@@ -23,7 +23,7 @@ class Metodos_Daterium
         global $daterium_userid;
         $this->userID = $daterium_userid;
         global $daterium_id_marca;
-        $this->marcaID= $daterium_id_marca;
+        $this->marcaID = $daterium_id_marca;
     }
 
     /**
@@ -98,6 +98,24 @@ class Metodos_Daterium
 
         return $filas;
     }
+
+    /**
+     * Función para obtener los nombres de las familias.
+     */
+    public function daterium_get_family_names($xml)
+    {
+        $filas = [];
+        foreach ($xml->xpath('familia') as $nodo) {
+            $caja = [
+                'id' => intval($nodo['id']),
+                'nombre' => strval($nodo->nombre),
+            ];
+            $filas[] = $caja;
+        }
+
+        return $filas;
+    }
+
 
     /**
      * Función para obtener la lista de productos que tiene una categoria.
@@ -215,7 +233,7 @@ class Metodos_Daterium
 
         global $daterium_userid;
         $xml = simplexml_load_file("https://api.dateriumsystem.com/marcas.php?userID=" . $daterium_userid);
-        $nombre =  strval($xml->xpath('//marca[@id="' . $idmarca . '"][1]/nombre[1]')[0] ?? "Catálogo");
+        $nombre = strval($xml->xpath('//marca[@id="' . $idmarca . '"][1]/nombre[1]')[0] ?? "Catálogo");
 
         return $nombre;
     }
@@ -230,7 +248,7 @@ class Metodos_Daterium
         return $nombre;
     }
 
-    
+
 
     /**
      * Función para obtener la clasificación AECOC.
@@ -579,7 +597,7 @@ class Metodos_Daterium
 
             $documentos = $this->get_documentos_ref($referencia);
 
-            $datos_referencias[$i] = ['descripcion' => $descripcion, 'ref' => $ref, 'ean' => $ean, 'caracteristicas' => $completo_caracteristica, 'dimensiones' => $dimensiones, 'precio' => $pre_tarifa, 'precio_script' => $precio_script, 'precio_recomendado' => $precio_recomendado, 'uni_pre' => $unidad_precio, 'cant_min' => $cantidad_minima, 'cant_cont' => $cant_cont, 'uni_cont' => $uni_cont, 'peso' => $peso, 'largo' => $largo, 'ancho' => $ancho, 'alto' => $alto, 'presentacion' => $presentacion, 'un_entrega' => $un_entrega, 'up_ean' => $up_ean, 'up_cantidad' => $up_cantidad, 'up_peso' => $up_peso, 'up_largo' => $up_largo, 'up_ancho' => $up_ancho, 'up_alto' => $up_alto, 'dropshipping' => $dropshipping, 'estado' => $estado, 'estado_fecha' => $estado_fecha, 'codiart' => $codiart, 'docu_ref' => $documentos,  'imagen' => $imagen, 'nombre_caracteristicas' => $nombres_caracteristicas, 'datos_caracteristicas' => $datos_caracteristicas, 'nombres_atributos_diferenciadores' => $nombres_atributos_diferenciadores, 'datos_atributos_diferenciadores' => $datos_atributos_diferenciadores];
+            $datos_referencias[$i] = ['descripcion' => $descripcion, 'ref' => $ref, 'ean' => $ean, 'caracteristicas' => $completo_caracteristica, 'dimensiones' => $dimensiones, 'precio' => $pre_tarifa, 'precio_script' => $precio_script, 'precio_recomendado' => $precio_recomendado, 'uni_pre' => $unidad_precio, 'cant_min' => $cantidad_minima, 'cant_cont' => $cant_cont, 'uni_cont' => $uni_cont, 'peso' => $peso, 'largo' => $largo, 'ancho' => $ancho, 'alto' => $alto, 'presentacion' => $presentacion, 'un_entrega' => $un_entrega, 'up_ean' => $up_ean, 'up_cantidad' => $up_cantidad, 'up_peso' => $up_peso, 'up_largo' => $up_largo, 'up_ancho' => $up_ancho, 'up_alto' => $up_alto, 'dropshipping' => $dropshipping, 'estado' => $estado, 'estado_fecha' => $estado_fecha, 'codiart' => $codiart, 'docu_ref' => $documentos, 'imagen' => $imagen, 'nombre_caracteristicas' => $nombres_caracteristicas, 'datos_caracteristicas' => $datos_caracteristicas, 'nombres_atributos_diferenciadores' => $nombres_atributos_diferenciadores, 'datos_atributos_diferenciadores' => $datos_atributos_diferenciadores];
 
             $i = $i + 1;
             //  'fan_dto' => $fam_descuento, 'tipo_IVA' => $tipo_iva,
