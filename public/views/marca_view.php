@@ -25,15 +25,13 @@ defined('ABSPATH') or exit;
                             $familiaId = 1;
                             foreach ($productos_hijos as $familia => $productos_familia) {
                                 ?>
-                                <li id="menu-familia-<?php echo $familiaId ?>" class="daterium-brand-menu-list-item"
+                                <li id="bmf<?php echo $familiaId ?>" class="daterium-brand-menu-list-item"
                                     onclick="mostrarFamilia('mf<?php echo $familiaId ?>')">
                                     <h5 class="daterium-brand-menu-list-title">
                                         <a alt="<?php echo $familia; ?>" data-original-text="<?php echo $familia; ?>">
                                             <?php echo $familia; ?>
                                         </a>
-                                        <span class="daterium-toggle-button"
-                                            onclick="mostrarSubfamilias(this,'mfm<?php echo $familiaId ?>')">+</span>
-                                        </span>
+                                        
                                     </h5>
                                 </li>
                                 <?php
@@ -47,7 +45,7 @@ defined('ABSPATH') or exit;
                     foreach ($productos_hijos as $familia => $productos_familia) {
                         $subfamiliaId = 0; ?>
 
-                        <ul class="daterium-subfamilia-list" id="mfm<?php echo $familiaIdSubfamilia ?>">
+                        <ul class="daterium-subfamilia-list" id="smf<?php echo $familiaIdSubfamilia ?>">
                             <?php
                             foreach ($productos_familia as $subfamilia => $productos_subfamilia) {
                                 ?>
@@ -124,7 +122,8 @@ defined('ABSPATH') or exit;
             <script>
                 familyActive = <?php echo $param_familia ?>;
                 mostrarFamilia('mf<?php echo $param_familia ?>');
-                mostrarSubfamilias(button,'mf<?php echo $param_familia ?>');
+                mostrarSubfamilias('mf<?php echo $param_familia ?>');
+                cambiarColorActivo('bmf<?php echo $familiaId ?>');
             </script>
             <?php
         }
