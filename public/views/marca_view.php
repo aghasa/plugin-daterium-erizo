@@ -18,6 +18,54 @@ defined('ABSPATH') or exit;
         <div class="wrap">
 
             <div class="daterium-brand-box">
+                <div class="daterium-brand-menu">
+                    <div class="daterium-brand-menu-container">
+                        <ul class="daterium-brand-menu-list">
+                            <?php
+                            $familiaId = 1;
+                            foreach ($productos_hijos as $familia => $productos_familia) {
+                                ?>
+                                <li id="menu-familia-<?php echo $familiaId ?>" class="daterium-brand-menu-list-item"
+                                    onclick="mostrarFamilia('mf<?php echo $familiaId ?>')">
+                                    <h5 class="daterium-brand-menu-list-title">
+                                        <a alt="<?php echo $familia; ?>" data-original-text="<?php echo $familia; ?>">
+                                            <?php echo $familia; ?>
+                                        </a>
+                                        <span class="daterium-toggle-button"
+                                            onclick="mostrarSubfamilias(this,'mfm<?php echo $familiaId ?>')">+</span>
+                                        </span>
+                                    </h5>
+                                </li>
+                                <?php
+                                ++$familiaId;
+                            }
+                            ; ?>
+                        </ul>
+                    </div>
+                    <?php
+                    $familiaIdSubfamilia = 1;
+                    foreach ($productos_hijos as $familia => $productos_familia) {
+                        $subfamiliaId = 0; ?>
+
+                        <ul class="daterium-subfamilia-list" id="mfm<?php echo $familiaIdSubfamilia ?>">
+                            <?php
+                            foreach ($productos_familia as $subfamilia => $productos_subfamilia) {
+                                ?>
+                                <li id="menu-familia-<?php echo $subfamiliaId ?>" class="daterium-brand-menu-subitem">
+                                    <a href="#mf<?php echo $familiaIdSubfamilia; ?>sf<?php echo $subfamiliaId; ?>" alt="<?php echo $subfamilia; ?>">
+                                        <?php echo $subfamilia; ?>
+                                    </a>
+                                </li>
+                                <?php
+                                ++$subfamiliaId;
+                            }
+                            ?>
+
+                        </ul><?php
+                        ++$familiaIdSubfamilia;
+                    }
+                    ?>
+                </div>
                 <div class="daterium-brand">
                     <?php
                     $familiaId = 1;
@@ -67,59 +115,20 @@ defined('ABSPATH') or exit;
                         ++$familiaId;
                     } ?>
                 </div>
-                <div class="daterium-brand-menu">
-                    <div class="daterium-brand-menu-container">
-                        <ul class="daterium-brand-menu-list">
-                            <?php
-                            $familiaId = 1;
-                            foreach ($productos_hijos as $familia => $productos_familia) {
-                                ?>
-                                <li id="menu-familia-<?php echo $familiaId ?>" class="daterium-brand-menu-list-item" onclick="mostrarFamilia(mf<?php echo $familiaId ?>)">
-                                    <h5 class="daterium-brand-menu-list-title">
-                                        <a alt="<?php echo $familia; ?>" data-original-text="<?php echo $familia; ?>">
-                                            <?php echo $familia; ?>
-                                        </a>
-                                        <span class="daterium-toggle-button">+</span>
-                                        </span>
-                                    </h5>
-                                    <ul class="daterium-subfamilia-list">
-                                        <?php
-                                        $subfamiliaId = 0;
-                                        foreach ($productos_familia as $subfamilia => $productos_subfamilia) {
-                                            ?>
-                                            <li class="daterium-brand-menu-subitem">
-                                                <a alt="<?php echo $subfamilia; ?>">
-                                                    <?php echo $subfamilia; ?>
-                                                </a>
-                                            </li>
-                                            <?php
-                                            ++$subfamiliaId;
-                                        }
-                                        ?>
-                                    </ul>
-                                </li>
 
-
-
-                                <?php
-                                ++$familiaId;
-                            }
-                            ; ?>
-                        </ul>
-                    </div>
-                </div>
             </div>
         </div>
-        <?php 
-if($param_familia != 0){
-    ?>
-    <script>
-        familyActive = <?php echo $param_familia ?>;
-        mostrarFamilia(<mf?php echo $param_familia ?>);
-        </script>
-    <?php
-}
-?>
+        <?php
+        if ($param_familia != 0) {
+            ?>
+            <script>
+                familyActive = <?php echo $param_familia ?>;
+                mostrarFamilia('mf<?php echo $param_familia ?>');
+                mostrarSubfamilias(button,'mf<?php echo $param_familia ?>');
+            </script>
+            <?php
+        }
+        ?>
     <?php } else {
         echo '<h3 style="text-align: center;">No es posible conectar con el catálogo online</h3>';
     } ?>
